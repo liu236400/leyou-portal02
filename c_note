@@ -1,0 +1,57 @@
+1.启动：live-server --port=9002
+2.chown leyou:leyou elasticsearch-6.2.4/ -R 使该文件及其子文件归leyou组下的leyou用户所有
+3.ElasticSeach语法：
+  a.新增
+      PUT /heima/goods/2
+      {
+          "title":"2号大米手机",
+          "images":"http://image.leyou.com/12479122.jpg",
+          "price":3899.00,
+          "stock"=: 100,
+          "saleable":true
+      }
+    ---------------------------------------------------------------
+  b.查询所有
+      GET /heima/_search
+      {
+        "query": {"match_all": {}}
+      }
+    ---------------------------------------------------------------
+   c.根据字段全文检索
+     GET /heima/_search
+     {
+       "query": {
+         "match": {
+           "title": "大米手机"
+         }
+       }
+     }
+     --------------------------------------------------------------
+     GET /heima/_search
+     {
+       "query": {
+         "match": {
+           "title": {
+             "query": "大米手机","operator": "and"
+           }
+         }
+       }
+     }
+    ----------------------------------------------------------------
+    GET /goods/_search
+    {
+      "query": {"match_all": {
+      }}
+    }
+  --------------------------------------------
+  @keyup.stop.prevent='search' 键盘弹起时间，阻止时间的冒泡行为
+
+   let p = {};
+   p.name = "jack";//name作为字符串当成属性名
+   p[key] = "jack"; //[]中可以接受变量，并把变量的值作为属性
+  -------------------------------------------
+ 例：let params = this.$qs.stringify(obj, { allowDots: true })
+ 用{ allowDots: true }来实现%5D转为"."的操作，对象中嵌套对象时需要修改
+  -------------------------------------------------
+ vue中：的作用
+
